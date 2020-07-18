@@ -1,0 +1,10 @@
+sudo: required
+services:
+    - docker
+
+before_install:
+    - docker build -t alfin/d-react -f Dockerfile.dev .
+
+script:
+    - docker run -e CI=true alfin/d-react npm run test
+    
