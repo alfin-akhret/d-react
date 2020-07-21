@@ -8,3 +8,14 @@ before_install:
 script:
     - docker run -e CI=true alfin/d-react npm run test
     
+deploy:
+    provider: elasticbeanstalk
+    region: "us-west-2"
+    app: "d-react"
+    env: "DReact-env"
+    bucket_name: "elasticbeanstalk-us-west-2-027066098199"
+    bucket_path: "d-react"
+    on:
+        branch: master
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
